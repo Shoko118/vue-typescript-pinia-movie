@@ -23,6 +23,7 @@ export const useHookState = defineStore({
   actions: {
     async fetchMovies() {
       try {
+        this.loading = false;
         const api = `https://www.omdbapi.com/?s=${this.inputSearch}&apikey=${MY_API_KEY}`;
         const res = await fetch(api);
         const data = await res.json();

@@ -10,15 +10,14 @@ const { movies, loading } = storeToRefs(hookState);
 <template>
   <ul v-if="loading">
     <li v-for="(movie, index) in movies" :key="index">
-      <div>{{ movie }}</div>
+      <!-- <div>{{ movie }}</div> -->
       <img :src="movie.Poster" alt="poster" width="200" height="200" />
       <h2>{{ movie.Title }}</h2>
       <p>{{ movie.Year }}</p>
-      <p>{{ movie.Type }}</p>
     </li>
   </ul>
 
   <div v-else>
-    <p>404 DID NOT GET IT!!!!</p>
+    <p>Loading...</p>
   </div>
 </template>
