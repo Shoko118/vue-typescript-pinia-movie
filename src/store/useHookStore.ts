@@ -13,7 +13,7 @@ export const useHookState = defineStore({
   id: "hookState",
   state: () =>
     ({
-      inputSearch: "Batman",
+      inputSearch: "",
       loading: true,
       movies: [],
     } as RootState),
@@ -29,7 +29,7 @@ export const useHookState = defineStore({
         const data = await res.json();
         console.log("THE DATA", data);
 
-        this.movies = data;
+        this.movies = data.Search;
         this.loading = true;
       } catch (err) {
         console.log("This is the err", err);

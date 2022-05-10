@@ -5,6 +5,7 @@ import { useHookState } from "../store/useHookStore";
 const hookState = useHookState();
 
 const { movies, loading } = storeToRefs(hookState);
+console.log(movies);
 </script>
 
 <template>

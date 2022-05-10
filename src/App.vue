@@ -1,14 +1,28 @@
 <script setup lang="ts">
-import { watchEffect } from "vue";
+import { watch, watchEffect } from "vue";
 import { useHookState } from "./store/useHookStore";
 
 import Movies from "./components/Movies.vue";
 import SearchBar from "./components/SearchBar.vue";
+import { storeToRefs } from "pinia";
 
 const hookState = useHookState();
+const { inputSearch } = storeToRefs(hookState);
 
-watchEffect(() => {
-  hookState.fetchMovies();
+const debounce = (callback: any, time: number) => {
+  let timeout: number;
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callback();
+    }, time);
+  };
+};
+
+const fetchMoviesDebounce = debounce(hookState.fetchMovies, 2000);
+
+watch(inputSearch, () => {
+  fetchMoviesDebounce();
 });
 </script>
 
