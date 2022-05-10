@@ -3,6 +3,7 @@ import { watchEffect } from "vue";
 import { useHookState } from "./store/useHookStore";
 
 import Movies from "./components/Movies.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 const hookState = useHookState();
 
@@ -14,7 +15,6 @@ watchEffect(() => {
 <template>
   <h1>Movies App</h1>
 
-  <!-- search bar -->
-  <!-- loops for movies -->
+  <SearchBar />
   <Movies />
 </template>

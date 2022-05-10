@@ -14,7 +14,7 @@ export const useHookState = defineStore({
   state: () =>
     ({
       inputSearch: "Batman",
-      loading: false,
+      loading: true,
       movies: [],
     } as RootState),
 
@@ -33,6 +33,13 @@ export const useHookState = defineStore({
       } catch (err) {
         console.log("This is the err", err);
       }
+    },
+    handleSearch() {
+      if (this.loading === false) return;
+
+      this.inputSearch = this.inputSearch;
+
+      this.loading = true;
     },
   },
 });
