@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { watch, watchEffect } from "vue";
+import { watch } from "vue";
 import { useHookState } from "./store/useHookStore";
+import { storeToRefs } from "pinia";
 
 import Movies from "./components/Movies.vue";
 import SearchBar from "./components/SearchBar.vue";
-import { storeToRefs } from "pinia";
 
 const hookState = useHookState();
 const { inputSearch } = storeToRefs(hookState);
 
+// JS Debounce
 const debounce = (callback: any, time: number) => {
   let timeout: number;
   return () => {
@@ -27,8 +28,12 @@ watch(inputSearch, () => {
 </script>
 
 <template>
-  <h1>Movies App</h1>
+  <div class="bg-slate-500 min-h-screen text-white">
+    <div class="mx-auto w-full">
+      <h1 class="text-center py-10 text-2xl font-bold">Movies App</h1>
 
-  <SearchBar />
-  <Movies />
+      <SearchBar />
+      <Movies />
+    </div>
+  </div>
 </template>

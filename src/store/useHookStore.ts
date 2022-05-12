@@ -3,11 +3,11 @@ import type { MoviesType } from "../interface/interface";
 
 const MY_API_KEY: string = "82b530a1";
 
-export type RootState = {
+export interface RootState {
   movies: MoviesType[];
   inputSearch: string;
   loading: boolean;
-};
+}
 
 export const useHookState = defineStore({
   id: "hookState",
